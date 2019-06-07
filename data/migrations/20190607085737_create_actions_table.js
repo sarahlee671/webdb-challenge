@@ -4,6 +4,15 @@ exports.up = function(knex, Promise) {
             tbl.increments();
 
             tbl
+                .integer('project_id')
+                .unsigned()
+                .references('id')
+                .inTable('projects')
+                .onDelete('RESTRICT')
+                .onUpdate('CASCADE')
+
+
+            tbl
                 .string('description', 400)
                 .notNullable()
 
